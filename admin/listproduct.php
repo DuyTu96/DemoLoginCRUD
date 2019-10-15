@@ -63,12 +63,12 @@
 											</td>
 											<td><?php echo $row['prd_price']?> VND</td>
 											<td>
-												<a class = "btn <?php if($row['prd_status']==1){echo"btn-success";}else{echo"btn-danger";}?>" href="#" role="button">Còn hàng</a>
+												<a class = "btn <?php if($row['prd_status']==1){echo"btn-success";}else{echo"btn-danger";}?>" href="#" role="button"><?php if ($row['prd_status']==1){echo"Còn hàng";}else{echo"Hết Hàng";} ?></a>
 											</td>
 											<td><?php echo $row['cat_name']?></td>
 											<td>
-												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+												<a href="index.php?page_layout=editproduct&prd_id=<?php echo $row['prd_id']?>" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true" name="editproduct"></i> Sửa</a>
+												<a href="index.php?page_layout=deleteproduct&prd_id=<?php echo $row['prd_id']?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true" name="deleteproduct"></i> Xóa</a>
 											</td>
 										</tr>
 										<?php }?>

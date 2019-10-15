@@ -23,6 +23,7 @@
 			case 'category': include_once('category.php'); break;
 			case 'listuser': include_once('listuser.php'); break;
 			case 'addproduct': include_once('addproduct.php'); break;
+			case 'editproduct': include_once('editproduct.php'); break;
 		}
 	}else {
 		include_once('main.php');
@@ -33,7 +34,25 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
-
+	<script>
+    function changeImg(input) {
+        //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            //Sự kiện file đã được load vào website
+            reader.onload = function (e) {
+                //Thay đổi đường dẫn ảnh
+                $('#avatar').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).ready(function () {
+        $('#avatar').click(function () {
+            $('#img').click();
+        });
+    });
+</script>
 </body>
 
 </html>
