@@ -6,6 +6,29 @@ $query_cat = mysqli_query($conn,$sql_cat);
 $sql="SELECT * FROM Product WHERE prd_id=$prd_id";
 $query=mysqli_query($conn,$sql);
 $row=mysqli_fetch_array($query);
+if (isset($_POST['submit'])) {
+    $cat_id=$_POST['cat_id'];
+    $prd_name=$_POST['prd_name'];
+    $prd_price=$_POST['prd_price'];
+    $prd_size=$_POST['prd_size'];
+    if($_FILES['prd_image']['name'] == ''){
+		$prd_image = $row['prd_image'];
+	}
+	else{
+		$prd_image = $_FILES['prd_image']['name'];
+		$prd_image_tmp_name = $_FILES['prd_image']['tmp_name'];
+		move_uploaded_file($prd_image_tmp_name, '../admin/img/product/'.$prd_image);
+	}
+    $prd_status= $_POST['prd_status'];
+    $prd_featured=$_POST['prd_featured'];
+    $prd_detials=$_POST['prd_detials'];
+
+    $sql = "UPDATE `Product` SET `cat_id`='$cat_id',`prd_name`='$prd_name',
+    `prd_price`='$prd_price',`prd_size`='$prd_size',`prd_image`='$prd_image',`prd_status`='$prd_status',
+    `prd_featured`='$prd_featured',`prd_detials`='$prd_detials' WHERE prd_id=$prd_id";
+    $query=mysqli_query($conn,$sql);
+    header("location:index.php?page_layout=listproduct");
+}
 ?>
 <!--main-->
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -35,7 +58,7 @@ $row=mysqli_fetch_array($query);
                                 </div>
                                 <div class="form-group">
                                     <label>Mã sản phẩm</label>
-                                    <input type="text" name="prd_id" class="form-control" value="<?php echo $row['prd_id'];?>">
+                                    <input type="text" readonly="true" name="prd_id" class="form-control" value="<?php echo $row['prd_id'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
@@ -77,8 +100,8 @@ $row=mysqli_fetch_array($query);
                                 <div class="form-group">
                                     <label>Thông tin</label>
                                     <textarea name="prd_detials" style="width: 100%;height: 100px;" value="<?php echo $row['prd_details']?>"></textarea>
-                                    <button class="btn btn-success" name="submit" type="submit">Sửa sản phẩm</button>
-                                    <button class="btn btn-danger" type="reset">Huỷ bỏ</button>
+                                    <button onClick = "alert('Sửa Sản Phẩm Thành Công!');"  class="btn btn-success" name="submit" type="submit">Sửa sản phẩm</button>
+                                    <button class="btn btn-danger" name="reset" type="reset">Huỷ bỏ</button>
                                 </div>
                             </div>
                         </form>

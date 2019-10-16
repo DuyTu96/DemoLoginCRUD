@@ -24,6 +24,9 @@
 			case 'listuser': include_once('listuser.php'); break;
 			case 'addproduct': include_once('addproduct.php'); break;
 			case 'editproduct': include_once('editproduct.php'); break;
+			case 'editcategory': include_once('editcategory.php'); break;
+			case 'listuser': include_once('listuser.php'); break;
+			case 'adduser': include_once('adduser.php'); break;
 		}
 	}else {
 		include_once('main.php');

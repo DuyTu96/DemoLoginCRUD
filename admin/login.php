@@ -21,9 +21,10 @@
 			$query = mysqli_query($conn, $sql);
 			$row = mysqli_num_rows($query);
 			if ($row>0) {
-				if (isset($_POST['remember'])!=0){
-					setcookie('email', $_POST['email'], time() + 3600);
-					setcookie('password', $_POST['password'], time() + 3600);
+				if (!empty($_POST['remember'])){
+					setcookie('rememberemail', $_POST['email'], time() + 3600);
+				}else{
+					setcookie('rememberemail',"");
 				}
 				$_SESSION['email']= $email;
 				$_SESSION['password']=$password;

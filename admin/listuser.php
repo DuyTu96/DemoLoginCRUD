@@ -1,4 +1,10 @@
 
+	<?php
+	$sql="SELECT * FROM User";
+	$query=mysqli_query($conn,$sql);
+	$row=mysqli_fetch_array($query);
+	?>
+	
 	<!--main-->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -26,12 +32,12 @@
 					<div class="panel-body">
 						<div class="bootstrap-table">
 							<div class="table-responsive">
-								<div class="alert bg-success" role="alert">
+								<!-- <div class="alert bg-success" role="alert">
 									<svg class="glyph stroked checkmark">
 										<use xlink:href="#stroked-checkmark"></use>
 									</svg>Đã thêm thành công<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-								</div>
-								<a href="adduser.html" class="btn btn-primary">Thêm Thành viên</a>
+								</div> -->
+								<a href="index.php?page_layout=adduser" class="btn btn-primary">Thêm Thành viên</a>
 								<table class="table table-bordered" style="margin-top:20px;">
 
 									<thead>
@@ -40,7 +46,6 @@
 											<th>Email</th>
 											<th>Full</th>
 											<th>Address</th>
-                                            <th>Phone</th>
                                             <th>Level</th>
 											<th width='18%'>Tùy chọn</th>
 										</tr>
@@ -48,30 +53,17 @@
 									<tbody>
 									
 										<tr>
-											<td>1</td>
-											<td>Admin@gmail.com</td>
-											<td>Nguyễn thế phúc</td>
-											<td>Thường tín</td>
-                                            <td>0356653300</td>
-                                            <td>1</td>
+											<td><?php echo $row['user_id']?></td>
+											<td><?php echo $row['user_mail']?></td>
+											<td><?php echo $row['user_name']?></td>
+											<td><?php echo $row['user_pass']?></td>
+                                            <td><?php echo $row['user_level']?></td>
 											<td>
 												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 											</td>
                                         </tr>
-                                        <tr>
-											<td>1</td>
-											<td>Admin@gmail.com</td>
-											<td>Nguyễn thế phúc</td>
-											<td>Thường tín</td>
-                                            <td>0356653300</td>
-                                            <td>1</td>
-											<td>
-												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
-											</td>
-										</tr>
-								
+
 									</tbody>
 								</table>
 								<div align='right'>

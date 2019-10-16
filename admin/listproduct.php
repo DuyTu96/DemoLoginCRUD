@@ -1,3 +1,9 @@
+	<script>
+	function deleteproduct() {
+		confirm('Bạn có muốn xóa sản phẩm không?')
+	}
+	</script>
+	
 	<!--main-->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -68,7 +74,7 @@
 											<td><?php echo $row['cat_name']?></td>
 											<td>
 												<a href="index.php?page_layout=editproduct&prd_id=<?php echo $row['prd_id']?>" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true" name="editproduct"></i> Sửa</a>
-												<a href="index.php?page_layout=deleteproduct&prd_id=<?php echo $row['prd_id']?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true" name="deleteproduct"></i> Xóa</a>
+												<a href="deleteproduct.php&prd_id=<?php echo $row['prd_id']?>"  class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true" name="deleteproduct"></i> Xóa</a>
 											</td>
 										</tr>
 										<?php }?>
