@@ -51,19 +51,22 @@
 										</tr>
 									</thead>
 									<tbody>
-									
+									<?php
+									$sql_showlistuser="SELECT * FROM User";
+									$query_showlistuser=mysqli_query($conn,$sql_showlistuser);
+										while ($row_showlistuser=mysqli_fetch_array($query_showlistuser)) { ?>
 										<tr>
-											<td><?php echo $row['user_id']?></td>
-											<td><?php echo $row['user_mail']?></td>
-											<td><?php echo $row['user_name']?></td>
-											<td><?php echo $row['user_pass']?></td>
-                                            <td><?php echo $row['user_level']?></td>
+											<td><?php echo $row_showlistuser['user_id']?></td>
+											<td><?php echo $row_showlistuser['user_mail']?></td>
+											<td><?php echo $row_showlistuser['user_name']?></td>
+											<td><?php echo $row_showlistuser['user_pass']?></td>
+                                            <td><?php echo $row_showlistuser['user_level']?></td>
 											<td>
 												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 											</td>
                                         </tr>
-
+									<?php } ?>
 									</tbody>
 								</table>
 								<div align='right'>

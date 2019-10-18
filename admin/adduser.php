@@ -3,11 +3,23 @@ if (isset($_POST['submit'])) {
     $user_name=$_POST['user_name'];
     $user_mail=$_POST['user_mail'];
     $user_pass=$_POST['user_pass'];
+    $user_re_pass=$_POST['user_re_pass'];
     $user_level=$_POST['user_level'];
-
-    $sql="INSERT INTO `User`(`user_name`, `user_mail`, `user_pass`, `user_level`) VALUES ('$user_name','$user_mail','$user_pass','$user_level')";
-    $query=mysqli_query($conn,$sql);
-    header('location:index.php?page_layout=listuser');
+    
+    $sql = "SELECT * FROM User
+			WHERE user_mail = '$user_mail'";
+	$query = mysqli_query($conn, $sql);
+	$row = mysqli_num_rows($query);
+	if ($row > 0) {
+        $alert1 = '<div class="alert alert-danger">Email đã tồn tại</div>';
+    }elseif($user_pass != $user_re_pass){
+        $alert = '<div class="alert alert-danger">Repassword Sai</div>';
+    }else{
+        $sql="INSERT INTO `User`(`user_name`, `user_mail`, `user_pass`, `user_level`) VALUES ('$user_name',
+        '$user_mail','$user_pass','$user_level')";
+        $query=mysqli_query($conn,$sql);
+        header('location:index.php?page_layout=listuser');
+    }
 }
 ?>
 
@@ -31,13 +43,20 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="text" name="user_mail" class="form-control">
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>email đã tồn tại!</strong>
-                                    </div>
+                                    <?php if (isset($alert1)) {
+                                        echo $alert1;
+                                     } ?>
                                 </div>
                                 <div class="form-group">
                                     <label>password</label>
-                                    <input type="text" name="user_pass" class="form-control">
+                                    <input type="password" name="user_pass" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>repassword</label>
+                                    <input type="password" name="user_re_pass" class="form-control">
+                                    <?php if (isset($alert)) {
+                                        echo $alert;
+                                     } ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Full name</label>
@@ -51,14 +70,13 @@ if (isset($_POST['submit'])) {
                                     </select>
                                 </div>
                             </div>
-                        </form>
-                        <div class="row">
-                            <div class="col-md-8 col-lg-8 col-lg-offset-2 text-right">
+                            <div class="row">
+                                <div class="col-md-8 col-lg-8 col-lg-offset-2 text-right">
 
-                                <button name="submit" class="btn btn-success" type="submit" >Thêm thành viên</button>
-                                <button class="btn btn-danger" type="reset">Huỷ bỏ</button>
+                                    <button name="submit" class="btn btn-success" type="submit">Thêm thành viên</button>
+                                    <button class="btn btn-danger" type="reset">Huỷ bỏ</button>
+                                </div>
                             </div>
-                        </div>
                         </form>
                     </div>
 

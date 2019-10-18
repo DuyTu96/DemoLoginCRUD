@@ -22,7 +22,7 @@
 			$row = mysqli_num_rows($query);
 			if ($row>0) {
 				if (!empty($_POST['remember'])){
-					setcookie('rememberemail', $_POST['email'], time() + 3600);
+					setcookie('rememberemail', $_POST['email'], time() + 60*60*24*30);
 				}else{
 					setcookie('rememberemail',"");
 				}
