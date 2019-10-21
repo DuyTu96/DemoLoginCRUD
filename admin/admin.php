@@ -27,6 +27,7 @@
 			case 'editcategory': include_once('editcategory.php'); break;
 			case 'listuser': include_once('listuser.php'); break;
 			case 'adduser': include_once('adduser.php'); break;
+			case 'edituser': include_once('edituser.php'); break;
 		}
 	}else {
 		include_once('main.php');
