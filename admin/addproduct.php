@@ -3,7 +3,7 @@ $sql = 'SELECT * FROM Category';
 $query = mysqli_query($conn,$sql);
 
 if (isset($_POST['submit'])) {
-    $prd_id=$_POST['prd_id'];
+    // $prd_id=$_POST['prd_id'];
     $cat_id=$_POST['cat_id'];
     $prd_name=$_POST['prd_name'];
     $prd_price=$_POST['prd_price'];
@@ -14,8 +14,8 @@ if (isset($_POST['submit'])) {
     $prd_featured=$_POST['prd_featured'];
     $prd_detials=$_POST['prd_detials'];
 
-    $sql= "INSERT INTO `Product`(`prd_id`, `cat_id`, `prd_name`, `prd_price`, `prd_size`, `prd_image`,
-                        `prd_status`, `prd_featured`, `prd_detials`) VALUES ('$prd_id','$cat_id',
+    $sql= "INSERT INTO `Product`( `cat_id`, `prd_name`, `prd_price`, `prd_size`, `prd_image`,
+                        `prd_status`, `prd_featured`, `prd_detials`) VALUES ('$cat_id',
                         '$prd_name','$prd_price','$prd_size','$prd_image','$prd_status','$prd_featured',
                         '$prd_detials')";
     $query=mysqli_query($conn,$sql);
@@ -35,8 +35,8 @@ if (isset($_POST['submit'])) {
         <div class="col-xs-6 col-md-12 col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">Thêm sản phẩm</div>
-                <div class="panel-body">
                     <div class="row" style="margin-bottom:40px">
+                <div class="panel-body">
                         <form method="post" enctype="multipart/form-data">
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -49,10 +49,10 @@ if (isset($_POST['submit'])) {
                                         <?php }?>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Mã sản phẩm</label>
                                     <input type="text" name="prd_id" class="form-control">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
                                     <input type="text" name="prd_name" class="form-control">
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <label>Thông tin</label>
                                     <textarea name="prd_detials" style="width: 100%;height: 100px;"></textarea>
-                                    <button class="btn btn-success" name="submit" type="submit">Thêm sản phẩm</button>
+                                    <button onClick = "alert('Them Sản Phẩm Thành Công!');" class="btn btn-success" name="submit" type="submit">Thêm sản phẩm</button>
                                     <button class="btn btn-danger" type="reset">Huỷ bỏ</button>
                                 </div>
                             </div>
