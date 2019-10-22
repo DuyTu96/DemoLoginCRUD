@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
 									<div class="category-fix">
 										<a class="btn-category btn-primary" href="index.php?page_layout=editcategory&cat_id=<?php echo $row['cat_id']?>"><i
 												class="fa fa-edit"></i></a>
-										<a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
+										<a class="btn-category btn-danger" href="deletecategory.php?cat_id=<?php echo $row['cat_id'] ?>"><i class="fas fa-times"></i></i></a>
 									</div>
 								</div>
 								<?php }?>

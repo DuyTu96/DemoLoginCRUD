@@ -44,7 +44,7 @@
 										<tr class="bg-primary">
 											<th>ID</th>
 											<th>Email</th>
-											<th>Full</th>
+											<th>Name</th>
 											<th>Password</th>
 											<th>Level</th>
 											<th width='18%'>Tùy chọn</th>

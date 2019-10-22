@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
                         '$prd_detials')";
     $query=mysqli_query($conn,$sql);
     move_uploaded_file($prd_image_tmp_name, '/admin/img/product/'.$prd_image);
-	header('location:index.php?page_layout=listproduct');
+    header('location:index.php?page_layout=listproduct');
 }
 ?>
 <!--main-->
@@ -35,8 +35,8 @@ if (isset($_POST['submit'])) {
         <div class="col-xs-6 col-md-12 col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">Thêm sản phẩm</div>
-                    <div class="row" style="margin-bottom:40px">
-                <div class="panel-body">
+                <div class="row" style="margin-bottom:40px">
+                    <div class="panel-body">
                         <form method="post" enctype="multipart/form-data">
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -59,9 +59,9 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="form-group">
                                     <label>Giá sản phẩm (Giá chung)</label>
-                                    <input type="number" name="prd_price" class="form-control">
                                 </div>
                                 <div class="form-group">
+                                    <input type="number" name="prd_price" class="form-control">
                                     <label>Size Sản Phẩm</label>
                                     <input type="text" name="prd_size" class="form-control">
                                 </div>
@@ -93,8 +93,9 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <label>Thông tin</label>
                                     <textarea name="prd_detials" style="width: 100%;height: 100px;"></textarea>
-                                    <button onClick = "alert('Them Sản Phẩm Thành Công!');" class="btn btn-success" name="submit" type="submit">Thêm sản phẩm</button>
-                                    <button class="btn btn-danger" type="reset">Huỷ bỏ</button>
+                                    <button onClick="alert('Them Sản Phẩm Thành Công!');" class="btn btn-success"
+                                        name="submit" type="submit">Thêm sản phẩm</button>
+                                    <button class="btn btn-danger" type="reset" name="reset">Huỷ bỏ</button>
                                 </div>
                             </div>
                         </form>

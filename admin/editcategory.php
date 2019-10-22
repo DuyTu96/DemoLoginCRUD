@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 								$sql_catt="SELECT * FROM Category WHERE cat_id =$cat_id";
 								$query_catt=mysqli_query($conn,$sql_catt);
 								while ($row_catt=mysqli_fetch_array($query_catt)) { ?>
-								<option>----<?php echo $row_catt['cat_name']?>----</option>
+								<option>---- <?php echo $row_catt['cat_name']?> ----</option>
 								<?php }?>
 								</select>
 							</div>
